@@ -7,6 +7,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class LoginController {
+	
+	@RequestMapping(value = "/Home")
+	public String homePage(Map<String, Object> model){
+		model.put("message", "hiiiii Home Page");
+		return("Home/Home");
+		
+	}
 
 	@RequestMapping(value = "/Login")
 	public String loginPage(Map<String, Object> model){
@@ -14,4 +21,7 @@ public class LoginController {
 		return("Login/Login");
 		
 	}
+	
+	
 }
+ 
