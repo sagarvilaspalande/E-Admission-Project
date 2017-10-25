@@ -9,7 +9,17 @@ app.controller('UserCntrl', function($scope,$http){
 
 	$scope.buttonControl = true;
 	$scope.message = "";
+	
+	$http.post('/GetAllDepartments').then(function(response){
+		$scope.departmentList = response.data;
+		 
+	});
 
+	$http.post('/GetAllRoles').then(function(response){
+		$scope.roleList = response.data;
+		 
+	});
+	
 	$http.post('/GetAllUsers').then(function(response){
 		$scope.userList = response.data;
 	});
@@ -19,7 +29,7 @@ app.controller('UserCntrl', function($scope,$http){
 			$http.post('/AddUser',JSON.stringify($scope.data)).then(function(response){
 				$scope.userList = response.data;
 				$scope.data = [];
-				$scope.message = "Record Addeed Successfully";});
+				$scope.message = "Record Added Successfully!";});
 		}
 	};
 	
@@ -31,7 +41,7 @@ app.controller('UserCntrl', function($scope,$http){
 				$scope.data = [];
 				$scope.userList = response.data;
 				$scope.buttonControl = true;
-				$scope.message = "Record Deleted Successfully";
+				$scope.message = "Record Deleted Successfully!";
 			});
 		}    			
 	};
@@ -49,7 +59,9 @@ app.controller('UserCntrl', function($scope,$http){
 			$scope.data = [];
 			$scope.userList = response.data;
 			$scope.buttonControl = true;
-			$scope.message = "Record Updated Successfully";
+			$scope.message = "Record Updated Successfully!";
 		});
 	};
+	
+	
 });

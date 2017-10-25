@@ -1,17 +1,25 @@
 package com.mahasoft.support_system.user;
 
 import java.util.Map;
-
+import javax.servlet.http.HttpSession;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class UserController {
 	
-	@RequestMapping(value = "/RegisterUser")
+	@Autowired
+	UserService userService;
+	
+	@RequestMapping(value = "/AddUser")
 	public String registerPage(Map<String, Object> model){
-		model.put("message", "Register Page");
-		return("Register/RegisterUser");
+		model.put("message", "UserPage");
+		return("User/AddUser");
 		
 	}
 	
@@ -28,5 +36,43 @@ public class UserController {
 		return("UserHome/UserHome");
 		
 	}
-
+	
+	@RequestMapping(value = "/ValidateUser", method = RequestMethod.POST)
+	public String ValidateUser(Map<String, Object> model,@RequestParam("userid") String 
+			userid,@RequestParam("password") String password,HttpSession session){
+		
+		System.out.println("user.userid = "+userid);
+		System.out.println("user.password = "+password);
+		
+		User user = userService.findByUserId(Integer.parseInt(userid));
+		System.out.println("user id = "+user.getUserid());
+		System.out.println("user password = "+user.getPassword());
+		
+		System.out.println("Role Id :: "+session.getAttribute("roleid"));
+		System.out.println("user Role Id :: "+user.getRoleid());
+		
+		if(session.getAttribute("roleid").equals(user.getRoleid())) 
+		{			
+			System.out.println("Valid User");
+			if(password.equals(user.getPassword())) 
+			{	
+				System.out.println("Successfully Logged In!!!");
+				return("AdminHome/AdminHome");
+			}
+			else 
+			{
+				System.out.println("role :: "+session.getAttribute("role"));
+				model.put("roleid", session.getAttribute("roleid"));		
+				model.put("role", session.getAttribute("role"));			
+				model.put("message", "Password Does Not Match! Please Enter The Correct Password.");
+				return("Login/Login");		
+			}	
+			
+		}else 
+		{
+			System.out.println("Invalid User");
+			model.put("message", "This User Does Not Have Access To Login Here!!!");
+			return("Login/Login");	
+		}			
+	}
 }

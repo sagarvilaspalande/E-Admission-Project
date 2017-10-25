@@ -1,4 +1,4 @@
-package com.mahasoft.support_system.control_access;
+package com.mahasoft.support_system.controlAccess;
 
 import java.util.Date;
 import java.util.List;
@@ -16,21 +16,22 @@ public class ControlAccessRestController {
 	
 	@RequestMapping(value = "/GetAllControlAccesses", method = RequestMethod.POST)
 	public List<ControlAccess> GetAllControlAccesses(){
+		System.out.println("controlAccessService.getAllControlAccesses() ::"+controlAccessService.getAllControlAccesses());
 		return controlAccessService.getAllControlAccesses();
 	}
 	
 	@RequestMapping(value = "/AddControlAccess", method = RequestMethod.POST)
 	public List<ControlAccess> AddControlAccess(@RequestBody ControlAccess controlAccess){
-		controlAccess.setBr_code("1");
+		controlAccess.setBrCode("1");
 		controlAccess.setStatus("A");
-		controlAccess.setCreated_date(new Date());
+		controlAccess.setCreatedDate(new Date());
 		controlAccessService.addControlAccess(controlAccess);
 		return controlAccessService.getAllControlAccesses();
 	}
 	
 	@RequestMapping(value = "/UpdateControlAccess", method = RequestMethod.POST)
 	public List<ControlAccess> UpdateControlAccess(@RequestBody ControlAccess controlAccess){
-		controlAccess.setUpdated_date(new Date());
+		controlAccess.setUpdatedDate(new Date());
 		controlAccessService.updateControlAccess(controlAccess);
 		return controlAccessService.getAllControlAccesses();
 	}

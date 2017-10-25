@@ -1,4 +1,4 @@
-package com.mahasoft.support_system.control_access;
+package com.mahasoft.support_system.controlAccess;
 
 import java.util.Map;
 

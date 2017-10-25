@@ -14,45 +14,45 @@
 	
 </head>
 <body>
-<br>
-	<div class="container-fluid">
-	<div class="panel panel-info">
-		 <div class="panel-body"align="center">  
-		 <div class="container " style="margin-top: ; margin-bottom: 55%;">   
-	<nav class="navbar navbar-default" style="background-color: #A9FBFC;padding-left: 0px;padding-right: 0px;">
+	<br>
+	<div class="container-fluid ">
+		<div class="panel panel-primary">
+			<div class="panel-body" align="center">  
+		 		<div class="container-fluid " style="margin-top: ; margin-bottom: 55%;" >   
+					<nav class="navbar navbar-default" style="background-color: #CEF6EC;">	 
+	    				<div class="navbar-header">
+	      					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+						        <span class="icon-bar"></span>
+						        <span class="icon-bar"></span>
+						        <span class="icon-bar"></span>                        
+						    </button>
+						    <a class="navbar-brand active" href="#" style="font-family: fantasy;color: #0431B4;font-size: 24px;">Support System</a>
+						</div>
+					    <div class="collapse navbar-collapse" id="myNavbar">
+					      <ul class="nav navbar-nav">
+					        <li><a href="/Home" style="color: #088A85;font-weight: bold;font-size: 16px;"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+					        <li class="dropdown">
+					          <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="color: #088A85;font-weight: bold;font-size: 16px;">BackOffice <span class="caret"></span></a>
+					          <ul class="dropdown-menu">
+					            <li><a href="/AddUser">User Master</a></li>
+					            <li><a href="/AddDepartment">Department Master</a></li>
+					            <li><a href="/AddRole">Role Master</a></li>
+					            <li><a href="/ControlAccess">Control Access Master</a></li>
+					          </ul>
+					        </li>
+					       
+					      </ul>
+					      <ul class="nav navbar-nav navbar-right">
+					       
+					        <li><a href="/Login" style="color: #088A85;font-weight: bold;">Logout <span class="glyphicon glyphicon-log-out"></span></a></li>
+					      </ul>
+					    </div>	 
+					</nav>
+				</div>
+			</div>
+		</div>
+	</div>
+	
 	 
-	    <div class="navbar-header">
-	      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-	        <span class="icon-bar"></span>
-	        <span class="icon-bar"></span>
-	        <span class="icon-bar"></span>                        
-	      </button>
-	      <a class="navbar-brand" href="#" >Support System</a>
-	    </div>
-	    <div class="collapse navbar-collapse" id="myNavbar">
-	      <ul class="nav navbar-nav">
-	        <li><a href="#">Home</a></li>
-	        <li class="dropdown">
-	          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Page 1 <span class="caret"></span></a>
-	          <ul class="dropdown-menu">
-	            <li><a href="#">Page 1-1</a></li>
-	            <li><a href="#">Page 1-2</a></li>
-	            <li><a href="#">Page 1-3</a></li>
-	          </ul>
-	        </li>
-	        <li><a href="#">Page 2</a></li>
-	        <li><a href="#">Page 3</a></li>
-	      </ul>
-	      <ul class="nav navbar-nav navbar-right">
-	        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-	        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-	      </ul>
-	    </div>
-	 
-	</nav>
-	</div>
-	</div>
-	</div>
-	 </div>     
 </body>
 </html>

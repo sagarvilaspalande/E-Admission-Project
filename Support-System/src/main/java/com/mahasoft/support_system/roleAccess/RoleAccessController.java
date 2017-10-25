@@ -1,4 +1,4 @@
-package com.mahasoft.support_system.role_access;
+package com.mahasoft.support_system.roleAccess;
 
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;

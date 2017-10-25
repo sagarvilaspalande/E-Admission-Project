@@ -17,21 +17,22 @@ public class RoleRestController {
 	
 	@RequestMapping(value = "/GetAllRoles", method = RequestMethod.POST)
 	public List<Role> getAllRoles(){
+		System.out.println("roleService.getAllRoles() ::"+roleService.getAllRoles());
 		return roleService.getAllRoles();
 	}
 	
 	@RequestMapping(value = "/AddRole", method = RequestMethod.POST)
 	public List<Role> AddRole(@RequestBody Role role){
-		role.setBr_code("1");
+		role.setBrCode("1");
 		role.setStatus("A");
-		role.setCreated_date(new Date());
+		role.setCreatedDate(new Date());
 		roleService.addRole(role);
 		return roleService.getAllRoles();
 	}
 	
 	@RequestMapping(value = "/UpdateRole", method = RequestMethod.POST)
 	public List<Role> UpdateRole(@RequestBody Role role){
-		role.setUpdated_date(new Date());
+		role.setUpdatedDate(new Date());
 		roleService.updateRole(role);
 		return roleService.getAllRoles();
 	}

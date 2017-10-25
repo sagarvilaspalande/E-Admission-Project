@@ -5,46 +5,83 @@ import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import javax.persistence.ManyToOne;
+
+import com.mahasoft.support_system.department.Department;
+import com.mahasoft.support_system.role.Role;
 
 @Entity
 public class User {
 
 	@javax.persistence.Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int user_id;	
-	private String user_name;
-	private String user_email;
+	private int userid;	
+	private String userName;
+	private String userEmail;
 	private String password;
-	private String user_designation;
-	private String role;
-	private String user_contact;
-	private String department;
-	private String status;
-	private String br_code;
-	private String created_by;
-	private Date created_date;
-	private String updated_by;
-	private Date updated_date;
-	private String deleted_by;
-	private Date deleted_date;
+	//private String userDesignation;
 	
-	public int getUser_id() {
-		return user_id;
+	private int roleid;
+	
+	@ManyToOne
+	private Role role;
+	
+	private int departmentid;
+	
+	@ManyToOne
+	private Department department;
+	
+	private String userContact;	
+	private String brCode;
+	private String status;
+	private String createdBy;
+	private Date createdDate;	
+	private String deletedBy;
+	private Date deletedDate;	
+	private String updatedBy;
+	private Date updatedDate;	
+	
+	public int getDepartmentid() {
+		return departmentid;
 	}
-	public void setUser_id(int user_id) {
-		this.user_id = user_id;
+	public void setDepartmentid(int departmentid) {
+		this.departmentid = departmentid;
 	}
-	public String getUser_name() {
-		return user_name;
+	public Department getDepartment() {
+		return department;
 	}
-	public void setUser_name(String user_name) {
-		this.user_name = user_name;
+	public void setDepartment(Department department) {
+		this.department = department;
 	}
-	public String getUser_email() {
-		return user_email;
+	public int getRoleid() {
+		return roleid;
 	}
-	public void setUser_email(String user_email) {
-		this.user_email = user_email;
+	public void setRoleid(int roleid) {
+		this.roleid = roleid;
+	}
+	public Role getRole() {
+		return role;
+	}
+	public void setRole(Role role) {
+		this.role = role;
+	}
+	public int getUserid() {
+		return userid;
+	}
+	public void setUserid(int userid) {
+		this.userid = userid;
+	}
+	public String getUserName() {
+		return userName;
+	}
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+	public String getUserEmail() {
+		return userEmail;
+	}
+	public void setUserEmail(String userEmail) {
+		this.userEmail = userEmail;
 	}
 	public String getPassword() {
 		return password;
@@ -52,29 +89,17 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public String getUser_designation() {
-		return user_designation;
+	public String getUserContact() {
+		return userContact;
 	}
-	public void setUser_designation(String user_designation) {
-		this.user_designation = user_designation;
+	public void setUserContact(String userContact) {
+		this.userContact = userContact;
+	}	
+	public String getBrCode() {
+		return brCode;
 	}
-	public String getRole() {
-		return role;
-	}
-	public void setRole(String role) {
-		this.role = role;
-	}
-	public String getUser_contact() {
-		return user_contact;
-	}
-	public void setUser_contact(String user_contact) {
-		this.user_contact = user_contact;
-	}
-	public String getDepartment() {
-		return department;
-	}
-	public void setDepartment(String department) {
-		this.department = department;
+	public void setBrCode(String brCode) {
+		this.brCode = brCode;
 	}
 	public String getStatus() {
 		return status;
@@ -82,46 +107,40 @@ public class User {
 	public void setStatus(String status) {
 		this.status = status;
 	}
-	public String getBr_code() {
-		return br_code;
+	public String getCreatedBy() {
+		return createdBy;
 	}
-	public void setBr_code(String br_code) {
-		this.br_code = br_code;
+	public void setCreatedBy(String createdBy) {
+		this.createdBy = createdBy;
 	}
-	public String getCreated_by() {
-		return created_by;
+	public Date getCreatedDate() {
+		return createdDate;
 	}
-	public void setCreated_by(String created_by) {
-		this.created_by = created_by;
+	public void setCreatedDate(Date createdDate) {
+		this.createdDate = createdDate;
 	}
-	public Date getCreated_date() {
-		return created_date;
+	public String getDeletedBy() {
+		return deletedBy;
 	}
-	public void setCreated_date(Date created_date) {
-		this.created_date = created_date;
+	public void setDeletedBy(String deletedBy) {
+		this.deletedBy = deletedBy;
 	}
-	public String getUpdated_by() {
-		return updated_by;
+	public Date getDeletedDate() {
+		return deletedDate;
 	}
-	public void setUpdated_by(String updated_by) {
-		this.updated_by = updated_by;
+	public void setDeletedDate(Date deletedDate) {
+		this.deletedDate = deletedDate;
 	}
-	public Date getUpdated_date() {
-		return updated_date;
+	public String getUpdatedBy() {
+		return updatedBy;
 	}
-	public void setUpdated_date(Date updated_date) {
-		this.updated_date = updated_date;
+	public void setUpdatedBy(String updatedBy) {
+		this.updatedBy = updatedBy;
 	}
-	public String getDeleted_by() {
-		return deleted_by;
+	public Date getUpdatedDate() {
+		return updatedDate;
 	}
-	public void setDeleted_by(String deleted_by) {
-		this.deleted_by = deleted_by;
-	}
-	public Date getDeleted_date() {
-		return deleted_date;
-	}
-	public void setDeleted_date(Date deleted_date) {
-		this.deleted_date = deleted_date;
+	public void setUpdatedDate(Date updatedDate) {
+		this.updatedDate = updatedDate;
 	}
 }

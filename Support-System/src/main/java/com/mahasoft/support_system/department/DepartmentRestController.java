@@ -22,15 +22,15 @@ public class DepartmentRestController {
 	@RequestMapping(value = "/AddDepartment", method=RequestMethod.POST)
 	public List<Department> AddDepartment(@RequestBody Department department){		
 		department.setStatus("A");
-		department.setBr_code("1");
-		department.setCreated_date(new Date());
+		department.setBrCode("1");
+		department.setCreatedDate(new Date());
 		departmentService.addDepartment(department);
 		return departmentService.getAllDepartments();
 	}
 
 	@RequestMapping(value = "/UpdateDepartment", method=RequestMethod.POST)
 	public List<Department> UpdateDepartment(@RequestBody Department department){		
-		department.setUpdated_date(new Date());
+		department.setUpdatedDate(new Date());
 		departmentService.updateDepartment(department);
 		return departmentService.getAllDepartments();
 	}

@@ -1,18 +1,21 @@
-package com.mahasoft.support_system.department;
+package com.mahasoft.support_system.controlAccess;
 
 import java.util.Date;
-
+import java.util.Set;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import javax.persistence.ManyToMany;
+import com.mahasoft.support_system.role.Role;
 
 @Entity
-public class Department {
+public class ControlAccess{
 
 	@javax.persistence.Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int departmentid;
-	private String departmentName;
+	private int controlaccessid;
+	
+	private String controlaccesstype;
 	private String brCode;
 	private String status;
 	private String createdBy;
@@ -22,17 +25,17 @@ public class Department {
 	private String updatedBy;
 	private Date updatedDate;
 	
-	public int getDepartmentid() {
-		return departmentid;
+	public int getControlaccessid() {
+		return controlaccessid;
 	}
-	public void setDepartmentid(int departmentid) {
-		this.departmentid = departmentid;
+	public void setControlaccessid(int controlaccessid) {
+		this.controlaccessid = controlaccessid;
 	}
-	public String getDepartmentName() {
-		return departmentName;
+	public String getControlaccesstype() {
+		return controlaccesstype;
 	}
-	public void setDepartmentName(String departmentName) {
-		this.departmentName = departmentName;
+	public void setControlaccesstype(String controlaccesstype) {
+		this.controlaccesstype = controlaccesstype;
 	}
 	public String getBrCode() {
 		return brCode;
@@ -81,5 +84,5 @@ public class Department {
 	}
 	public void setUpdatedDate(Date updatedDate) {
 		this.updatedDate = updatedDate;
-	}	
+	}
 }

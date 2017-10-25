@@ -19,7 +19,7 @@ app.controller('ControlAccessCtrl', function($scope, $http){
 			$http.post('/AddControlAccess',JSON.stringify($scope.data)).then(function(response){
 				$scope.controlAccessList = response.data;
 				$scope.data = [];
-				$scope.message = "Record Addeed Successfully";});
+				$scope.message = "Record Added Successfully!";});
 		}
 	};
 	
@@ -31,7 +31,7 @@ app.controller('ControlAccessCtrl', function($scope, $http){
 				$scope.data = [];
 				$scope.controlAccessList = response.data;
 				$scope.buttonControl = true;
-				$scope.message = "Record Deleted Successfully";
+				$scope.message = "Record Deleted Successfully!";
 			});
 		}    			
 	};
@@ -49,7 +49,7 @@ app.controller('ControlAccessCtrl', function($scope, $http){
 			$scope.data = [];
 			$scope.controlAccessList = response.data;
 			$scope.buttonControl = true;
-			$scope.message = "Record Updated Successfully";
+			$scope.message = "Record Updated Successfully!";
 		});
 	};
 });

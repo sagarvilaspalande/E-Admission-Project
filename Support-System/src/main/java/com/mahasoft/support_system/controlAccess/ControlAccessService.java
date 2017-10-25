@@ -1,8 +1,10 @@
-package com.mahasoft.support_system.control_access;
+package com.mahasoft.support_system.controlAccess;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.mahasoft.support_system.role.Role;
 
 @Service
 public class ControlAccessService {
@@ -24,5 +26,9 @@ public class ControlAccessService {
 	
 	public void deleteControlAccess(ControlAccess controlAccess) {
 		controlAccessRepository.delete(controlAccess);
+	}
+	
+	public ControlAccess findByControlaccessid(int controlaccessid){		
+		return controlAccessRepository.findByControlaccessid(controlaccessid);
 	}
 }

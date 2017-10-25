@@ -1,18 +1,32 @@
-package com.mahasoft.support_system.department;
+package com.mahasoft.support_system.roleAccess;
 
 import java.util.Date;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import javax.persistence.ManyToOne;
+
+import com.mahasoft.support_system.controlAccess.ControlAccess;
+import com.mahasoft.support_system.role.Role;
 
 @Entity
-public class Department {
+public class RoleAccess{
 
 	@javax.persistence.Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int departmentid;
-	private String departmentName;
+	private int roleaccessid;
+	
+	private int roleid;	
+	
+	@ManyToOne
+	private Role role;
+	
+	private int controlaccessid;
+	
+	@ManyToOne
+	private ControlAccess controlAccess;
+	
+	//private String roleAccess;
 	private String brCode;
 	private String status;
 	private String createdBy;
@@ -22,17 +36,35 @@ public class Department {
 	private String updatedBy;
 	private Date updatedDate;
 	
-	public int getDepartmentid() {
-		return departmentid;
+	public int getRoleaccessid() {
+		return roleaccessid;
 	}
-	public void setDepartmentid(int departmentid) {
-		this.departmentid = departmentid;
+	public void setRoleaccessid(int roleaccessid) {
+		this.roleaccessid = roleaccessid;
 	}
-	public String getDepartmentName() {
-		return departmentName;
+	public int getRoleid() {
+		return roleid;
 	}
-	public void setDepartmentName(String departmentName) {
-		this.departmentName = departmentName;
+	public void setRoleid(int roleid) {
+		this.roleid = roleid;
+	}
+	public Role getRole() {
+		return role;
+	}
+	public void setRole(Role role) {
+		this.role = role;
+	}
+	public int getControlaccessid() {
+		return controlaccessid;
+	}
+	public void setControlaccessid(int controlaccessid) {
+		this.controlaccessid = controlaccessid;
+	}
+	public ControlAccess getControlAccess() {
+		return controlAccess;
+	}
+	public void setControlAccess(ControlAccess controlAccess) {
+		this.controlAccess = controlAccess;
 	}
 	public String getBrCode() {
 		return brCode;
@@ -81,5 +113,5 @@ public class Department {
 	}
 	public void setUpdatedDate(Date updatedDate) {
 		this.updatedDate = updatedDate;
-	}	
+	}		
 }
