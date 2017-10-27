@@ -30,4 +30,8 @@ public class UserService {
 	public User findByUserId(int userid) {
 		return userRepository.findByUserid(userid);
 	}
+	
+	public User findByUseremail(String useremail) {
+		return userRepository.findByUseremail(useremail);
+	}
 }

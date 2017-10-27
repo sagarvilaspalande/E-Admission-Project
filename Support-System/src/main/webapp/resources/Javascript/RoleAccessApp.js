@@ -8,44 +8,26 @@ app.controller('RoleAccessCtrl', function($scope,$http){
 
 	$scope.buttonControl = true;
 	$scope.message = "";
-/*
-	$scope.example1model = [];
-	$scope.example1data = [ {id: 1, label: "David"}, {id: 2, label: "Jhon"}, {id: 3, label: "Danny"} ];
-
-	 $scope.SelectedCountries = [{
-	        "id": 1,
-	            "name": "India"
-	    }, {
-	        "id": 3,
-	            "name": "Japan"
-	    }, {
-	        "id": 5,
-	            "name": "Germany"
-	    }];
-	    $scope.MasterCountries = [{
-	        "id": 1,
-	            "name": "India"
-	    }, {
-	        "id": 2,
-	            "name": "America"
-	    }, {
-	        "id": 3,
-	            "name": "Japan"
-	    }, {
-	        "id": 4,
-	            "name": "China"
-	    }, {
-	        "id": 5,
-	            "name": "Germany"
-	    }]*/
-	
-	
-	$http.post('/GetAllRoles').then(function(response){
-		$scope.roleList = response.data;		 
-	});
 	
 	$http.post('/GetAllControlAccesses').then(function(response){
 		$scope.controlAccessList = response.data;
+	});
+
+    $scope.checkedControlAccesses = [];
+    
+    $scope.toggleCheck = function (controlaccess) {
+    	 //alert($scope.controlAccessList);  
+        if ($scope.checkedControlAccesses.indexOf(controlaccess) === -1) {
+            $scope.checkedControlAccesses.push(controlaccess);
+            //alert($scope.checkedControlAccesses);
+        } else {
+            $scope.checkedControlAccesses.splice($scope.checkedControlAccesses.indexOf(controlaccess), 1);
+            //alert($scope.checkedControlAccesses);
+        }             
+    };
+	
+	$http.post('/GetAllRoles').then(function(response){
+		$scope.roleList = response.data;		 
 	});
 	
 	$http.post('/GetAllRoleAccesses').then(function(response){
@@ -54,6 +36,7 @@ app.controller('RoleAccessCtrl', function($scope,$http){
 	
 	$scope.addRoleAccess = function(){    
 		if ($scope.roleAccessForm.$valid) {
+			alert(JSON.stringify($scope.data));
 			$http.post('/AddRoleAccess',JSON.stringify($scope.data)).then(function(response){
 				$scope.roleAccessList = response.data;
 				$scope.data = [];
@@ -61,10 +44,10 @@ app.controller('RoleAccessCtrl', function($scope,$http){
 		}
 	};
 	
-	$scope.deleteRoleAccess = function(role_access){
+	$scope.deleteRoleAccess = function(roleaccess){
 		if (confirm("Are You Sure To Delete The Record?")) {
 			$http.post('/DeleteRoleAccess',
-					JSON.stringify(role_access)
+					JSON.stringify(roleaccess)
 			).then(function(response){
 				$scope.data = [];
 				$scope.roleAccessList = response.data;
@@ -74,8 +57,8 @@ app.controller('RoleAccessCtrl', function($scope,$http){
 		}    			
 	};
 	
-	$scope.editRoleAccess = function(role_access){ 	
-		$scope.data = role_access;
+	$scope.editRoleAccess = function(roleaccess){ 	
+		$scope.data = roleaccess;
 		$scope.buttonControl = false;
 		$scope.message = "";
 	};

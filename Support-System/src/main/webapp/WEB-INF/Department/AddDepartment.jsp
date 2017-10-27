@@ -8,22 +8,49 @@
 	<title>Department Master</title>
 	<link href="/resources/css/bootstrap.min.css" rel="stylesheet">
 	<script type="text/javascript" src="/resources/Javascript/angular.min.js"></script>
+	<script type="text/javascript" src="/resources/Javascript/jquery.min.js"></script>
 	<script type="text/javascript" src="/resources/Javascript/bootstrap.min.js"></script>
-	
+	<script src="/resources/Javascript/jquery-3.2.1.min.js"></script>
 	<script type="text/javascript" src="/resources/Javascript/DepartmentApp.js"></script>
 </head>
-<body ng-controller="DepartmentCntrl">
-	<br>
+<body ng-controller="DepartmentCntrl">	
     <div class="container-fluid">
-    	<div class="panel panel-info">
-            <div class="panel-heading form-group" align="center">
-                <h3><b><font color="black" style="font-family: sans-serif;">Department Master</font> </b></h3>
-            </div>
-            
-            <div class="panel-body"align="center">   
-            <label style="color: #B40486;">{{message}}</label> 
-                   
-                <div class="container " style="margin-top: ; margin-bottom: 12%;">
+    	<nav class="navbar navbar-default navbar-fixed-top" style="background-color: #CEF6EC;" id="nav">	 
+	    	<div class="navbar-header">
+	      		<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>                        
+				</button>
+				<a class="navbar-brand active" href="#" style="font-family: fantasy;color: #0431B4;font-size: 24px;">Support System</a>
+			</div>
+			<div class="collapse navbar-collapse" id="myNavbar">
+				<ul class="nav navbar-nav">
+					<li><a href="/AdminHome" style="color: #088A85;font-weight: bold;font-size: 16px;"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+					<li class="dropdown">
+						<a class="dropdown-toggle" data-toggle="dropdown" href="#" style="color: #088A85;font-weight: bold;font-size: 16px;">BackOffice <span class="caret"></span></a>
+					    <ul class="dropdown-menu">					    	
+					        <li><a href="/AddDepartment">Department Master</a></li>
+					        <li><a href="/AddRole">Role Master</a></li>
+					        <li><a href="/ControlAccess">Control Access Master</a></li>
+					        <li><a href="/AddUser">User Master</a></li>
+					   	</ul>
+			    	</li>					
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="/Home" style="color: #088A85;font-weight: bold;padding-right: 35px;">Logout <span class="glyphicon glyphicon-log-out"></span></a></li>					
+				</ul>
+			</div>	 
+		</nav>
+		<br>
+		<br>
+		<br>
+		<br>
+    	<div class="panel panel-primary">
+            <h3 align="center"><b><font color="black" style="font-family: sans-serif;">Department Master</font> </b></h3>      
+            <div class="panel-body" align="center">   
+            	<label style="color: #B40486;">{{message}}</label>                   
+                <div class="container " style="margin-top: ; margin-bottom: ;">
                 	<form class="form-horizontal" role="form" name="departmentForm">    
 	                	<input type = "hidden" id = "departmentid" name = "departmentid" ng-model="data.departmentid">
 	                	<input type = "hidden" id = "brCode" name = "brCode" ng-model="data.brCode">
@@ -40,18 +67,17 @@
 	                        <div class="panel-body" >
 	                        	
 					                <div class="form-group">
-					                    <label for="departmentName" class="col-sm-3 control-label">Department</label>
-					                    <div class="col-sm-9">
-					                    	
+					                    <label for="departmentName" class="col-sm-4 control-label">Department</label>
+					                    <div class="col-sm-8">					                    	
 					                        <input type="text" id="departmentName" ng-model="data.departmentName" placeholder="Department" name = "departmentName" class="form-control" autofocus required>
 					                    </div>
 					                </div> <!-- /.form-group -->
 					                
 					                <div class="form-group">
-					                    <div class="col-sm-9 col-sm-offset-3">
+					                    <div class="col-sm-8 col-sm-offset-4">
 					                        <button ng-click="addDepartment();" class="btn btn-primary " ng-show="buttonControl">Add Department</button>
 					                        <button ng-click="updateDepartment();" class="btn btn-primary " ng-hide="buttonControl">Update Department</button>
-					                        <a class="btn btn-primary " href="/AdminHome"><span class="glyphicon glyphicon-backward"></span> Back</a>
+					                        <!-- <a class="btn btn-primary " href="/AdminHome"><span class="glyphicon glyphicon-backward"></span> Back</a> -->
 					                    </div>
 					                </div> <!-- /.form-group -->
 					           
@@ -59,30 +85,32 @@
 	                    </div>
 	                    
 	                    <div class="panel panel-info" style="max-width: 60%;" align="left">           
-	                        <div class="panel-body" >	                        	
-					            <table class="table table-bordered">
-					                	<thead>
-					                		<tr>
-					                			<th class="col-sm-2 text-center">Sr.No.</th>
-					                			<th class="col-sm-7 text-center">Department</th>
-					                			<th class="col-sm-3 text-center">Option</th>
-					                		</tr>
-					                	</thead>
-					                	<tbody>
-					                		<tr ng-repeat="department in departmentList">
-					                			<td class="text-center">{{$index + 1}}</td>
-					                			<td>{{department.departmentName}}</td>
-					                			<td class="text-center">
-					                				<a href="#" ng-click="editDepartment(department);">
-					                					<span style="color: blue;" class="glyphicon glyphicon-edit"></span>
-					                				</a> |
-					                				<a href="#" ng-click="deleteDepartment(department);">
-					                					<span style="color: red;" class="glyphicon glyphicon-remove"></span>
-					                				</a>
-					                			</td>
-					                		</tr>
-					                	</tbody>
-					        	</table>					           
+	                        <div class="panel-body" >
+	                        	<div class="table-responsive"> 	                        	
+						            <table class="table table-bordered">
+						                	<thead>
+						                		<tr>
+						                			<th class="col-sm-2 text-center">Sr.No.</th>
+						                			<th class="col-sm-7 text-center">Department</th>
+						                			<th class="col-sm-3 text-center">Option</th>
+						                		</tr>
+						                	</thead>
+						                	<tbody>
+						                		<tr ng-repeat="department in departmentList">
+						                			<td class="text-center">{{$index + 1}}</td>
+						                			<td>{{department.departmentName}}</td>
+						                			<td class="text-center">
+						                				<a href="#" ng-click="editDepartment(department);">
+						                					<span style="color: blue;" class="glyphicon glyphicon-edit"></span>
+						                				</a> |
+						                				<a href="#" ng-click="deleteDepartment(department);">
+						                					<span style="color: red;" class="glyphicon glyphicon-remove"></span>
+						                				</a>
+						                			</td>
+						                		</tr>
+						                	</tbody>
+						        	</table>
+					        	</div>					           
 	                        </div>
 	                    </div>
                     </form> <!-- /form --> 

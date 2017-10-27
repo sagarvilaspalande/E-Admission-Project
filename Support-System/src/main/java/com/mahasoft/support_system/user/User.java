@@ -16,8 +16,8 @@ public class User {
 	@javax.persistence.Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int userid;	
-	private String userName;
-	private String userEmail;
+	private String username;
+	private String useremail;
 	private String password;
 	//private String userDesignation;
 	
@@ -31,7 +31,7 @@ public class User {
 	@ManyToOne
 	private Department department;
 	
-	private String userContact;	
+	private String usercontact;	
 	private String brCode;
 	private String status;
 	private String createdBy;
@@ -39,19 +39,31 @@ public class User {
 	private String deletedBy;
 	private Date deletedDate;	
 	private String updatedBy;
-	private Date updatedDate;	
+	private Date updatedDate;
 	
-	public int getDepartmentid() {
-		return departmentid;
+	public int getUserid() {
+		return userid;
 	}
-	public void setDepartmentid(int departmentid) {
-		this.departmentid = departmentid;
+	public void setUserid(int userid) {
+		this.userid = userid;
 	}
-	public Department getDepartment() {
-		return department;
+	public String getUsername() {
+		return username;
 	}
-	public void setDepartment(Department department) {
-		this.department = department;
+	public void setUsername(String username) {
+		this.username = username;
+	}
+	public String getUseremail() {
+		return useremail;
+	}
+	public void setUseremail(String useremail) {
+		this.useremail = useremail;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
 	}
 	public int getRoleid() {
 		return roleid;
@@ -65,36 +77,24 @@ public class User {
 	public void setRole(Role role) {
 		this.role = role;
 	}
-	public int getUserid() {
-		return userid;
+	public int getDepartmentid() {
+		return departmentid;
 	}
-	public void setUserid(int userid) {
-		this.userid = userid;
+	public void setDepartmentid(int departmentid) {
+		this.departmentid = departmentid;
 	}
-	public String getUserName() {
-		return userName;
+	public Department getDepartment() {
+		return department;
 	}
-	public void setUserName(String userName) {
-		this.userName = userName;
+	public void setDepartment(Department department) {
+		this.department = department;
 	}
-	public String getUserEmail() {
-		return userEmail;
+	public String getUsercontact() {
+		return usercontact;
 	}
-	public void setUserEmail(String userEmail) {
-		this.userEmail = userEmail;
+	public void setUsercontact(String usercontact) {
+		this.usercontact = usercontact;
 	}
-	public String getPassword() {
-		return password;
-	}
-	public void setPassword(String password) {
-		this.password = password;
-	}
-	public String getUserContact() {
-		return userContact;
-	}
-	public void setUserContact(String userContact) {
-		this.userContact = userContact;
-	}	
 	public String getBrCode() {
 		return brCode;
 	}
@@ -142,5 +142,5 @@ public class User {
 	}
 	public void setUpdatedDate(Date updatedDate) {
 		this.updatedDate = updatedDate;
-	}
+	}	
 }

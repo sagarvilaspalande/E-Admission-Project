@@ -62,4 +62,11 @@ public class UserRestController {
 		session.setAttribute("userid", user.getUserid());
 		return userService.findByUserId(user.getUserid());
 	}
+	
+	@RequestMapping(value = "/GetUserByEmail", method = RequestMethod.POST)
+	public User GetUserByEmail(@RequestBody User user,HttpSession session){
+		System.out.println("user email = "+user.getUseremail());		
+		session.setAttribute("useremail", user.getUseremail());
+		return userService.findByUseremail(user.getUseremail());
+	}
 }
